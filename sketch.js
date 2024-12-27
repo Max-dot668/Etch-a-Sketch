@@ -5,15 +5,19 @@
 // Description: This program uses fundamentals of HTML, CSS, and Javascript to make an etch-a-sketch emulator in the browser.
 //=====================================================================================
 
-// function that creates the default 16x16 grid for the sketch
-function etch_a_sketch(size) {
-  const container = document.querySelector(".container");
+// Global variables that improve readability
+const size = 16;
 
-  for (let i = 0; i < size; i++) {   // creates 16 columns
+//============================================================================
+// function that creates the grid for the sketch
+function grid(size) {
+    const container = document.querySelector(".container");
+
+  for (let i = 0; i < size; i++) {   // creates n size columns
     let column = document.createElement("div");    
     column.classList.add("column");
     
-    for (let j = 1; j <= size; j++) {   // for each column, create 16 rows
+    for (let j = 1; j <= size; j++) {   // for each column, create n-size  rows
       let row = document.createElement("div");
       row.classList.add("row");
       column.appendChild(row);   // put each row inside its column
@@ -25,11 +29,32 @@ function etch_a_sketch(size) {
     container.addEventListener("mouseover", event => {
     event.target.style.backgroundColor = "black";
     });
-
 }
 
+// function that handles the rest button logic
+function reset(input) {
+  // logic that removes the current grid
+  document.querySelectorAll(".column").forEach((e) => e.parentNode.removeChild(e));
+  // create a new grid with user input
+  grid(input);
+}
 
-// Main Program 
+// Etch-a-Sketch function
+function etch_a_sketch() {
+  // default grid
+  grid(size);
+
+  // logic that deals with an event when user clicks on reset button
+  const resetButton = document.querySelector('button');
+
+  resetButton.addEventListener('click', () => {
+    let userInput = Number(prompt("Enter amount of sqaures per side to make the new grid"));
+    reset(userInput);
+  });
+}
+
+//============================================================================
+// Main Program
 
 // call the etch-a-sketch function
-etch_a_sketch(16);
+etch_a_sketch();
