@@ -48,8 +48,14 @@ function etch_a_sketch() {
   const resetButton = document.querySelector('button');
 
   resetButton.addEventListener('click', () => {
-    let userInput = Number(prompt("Enter amount of sqaures per side to make the new grid"));
-    reset(userInput);
+    let userInput = Number(prompt("Enter amount of squares per side to make the new grid"));
+    if (userInput > 100) {
+      alert("The new grid size exceeds the limit of 100, default size will be added instead");
+      reset(size);
+    }
+    else {
+      reset(userInput);
+    }
   });
 }
 
