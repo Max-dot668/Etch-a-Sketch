@@ -1,0 +1,27 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  background-color: lightblue;
+}
+
+.container {
+  background-color: white;
+  display: flex;  /* Makes items go side by side */
+  flex-wrap: wrap;  /* Allows items to wrap to next line */
+  width: 700px;  /* Gives a fixed width */
+  height: 700px;  /* Gives a fixed height */
+  margin: 0 auto;
+}
+
+.column {
+  display: flex;    /* Makes items inside the column flex items */
+  flex-direction: column;   /* Stacks items vertically instead of horizontally */
+  flex: 1 0 calc(100% / 16);  /* Each column takes 1/16th of width */
+}
+
+.row {
+  flex: 1;
+  border: 0.1px solid black;
+}
