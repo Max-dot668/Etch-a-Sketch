@@ -9,6 +9,17 @@
 const size = 16;
 
 //============================================================================
+
+// function that randomizes the RGB values when cursor hovers to screen
+function random_rgb(e) {
+  let x = Math.floor(Math.random() * 256);
+  let y = Math.floor(Math.random() * 256);
+  let z = Math.floor(Math.random() * 256);
+
+  let color = 'rgb(' + x + ',' + y + ',' + z + ')';
+  e.target.style.backgroundColor = color;
+}
+
 // function that creates the grid for the sketch
 function grid(size) {
     const container = document.querySelector(".container");
@@ -25,13 +36,13 @@ function grid(size) {
     container.appendChild(column);   // put each column in the container
   }
 
-  // add hovering sketch effect
-    container.addEventListener("mouseover", event => {
-    event.target.style.backgroundColor = "black";
+  // add hovering sketch effect with randomized RGB
+  container.addEventListener("mouseover", (e) => {
+    random_rgb(e);
     });
 }
 
-// function that handles the rest button logic
+// function that handles the reset button logic
 function reset(input) {
   // logic that removes the current grid
   document.querySelectorAll(".column").forEach((e) => e.parentNode.removeChild(e));
