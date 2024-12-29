@@ -70,6 +70,7 @@ button {
   margin: 0 auto;
 }
 
+
 .column {
   display: flex;    /* Makes items inside the column flex items */
   flex-direction: column;   /* Stacks items vertically instead of horizontally */
